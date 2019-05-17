@@ -121,6 +121,7 @@ var div2 = document.querySelector(".div2");
 var input = document.createElement("input");
 input.setAttribute("type", "checkbox");
 input.setAttribute("class", "input3");
+div2.appendChild(input);
 ```
 
 - 해결 방법은 버블링을 이용하면 된다. 부모 이벤트 리스너를 추가하면 된다.
