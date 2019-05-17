@@ -50,15 +50,13 @@ function logEvent(event) {
 ## 이벤트 캡처링
 
 ```html
-<body>
-  <div class="one">
-    div1
-    <div class="two">
-      div2
-      <div class="three">div3</div>
-    </div>
+<div class="one">
+  div1
+  <div class="two">
+    div2
+    <div class="three">div3</div>
   </div>
-</body>
+</div>
 ```
 
 ```javascript
@@ -92,6 +90,42 @@ function logEvent(event) {
 }
 ```
 
-해당 엘리먼트 이벤트 호출하고 싶다면
+해당 엘리먼트 이벤트 호출하고 싶다면 `event.stopPropagation()` 사용
 
 ## 이벤트 위임
+
+```html
+<div class="div1">
+  <div class="div2">
+    <input type="checkbox" class="input1" />
+    <input type="checkbox" class="input2" />
+  </div>
+</div>
+```
+
+```javascript
+var inputs = document.querySelectorAll("input");
+inputs.forEach(function(input) {
+  input.addEventListener("input", logEvent);
+});
+
+function logEvent(event) {
+  alert(event.currentTarget.className);
+}
+```
+
+- 만약 체크박스가 추가되면 이벤트를 새로 만들어줘야되는 문제점이 있다.
+
+```javascript
+var div2 = document.querySelector(".div2");
+var input = document.createElement("input");
+input.setAttribute("type", "checkbox");
+input.setAttribute("class", "input3");
+```
+
+- 해결 방법은 버블링을 이용하면 된다. 부모 이벤트 리스너를 추가하면 된다.
+
+```javascript
+var parentDiv2 = document.querySelector(".div2");
+parentDiv2.addEventListener("click", logEvent);
+```
