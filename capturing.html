@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<head>
+  <title>이벤트 캡처링</title>
+</head>
+
+<body>
+  <div class="div1">
+    div1
+    <div class="div2">
+      div2
+      <div class="div3">div3</div>
+    </div>
+  </div>
+  <script>
+    var divs = document.querySelectorAll("div");
+    divs.forEach(function(div) {
+      div.addEventListener("click", logEvent, { capture: true });
+    });
+
+    function logEvent(event) {
+      console.log("event.target", event.target);
+      console.log("event.currentTarget", event.currentTarget);
+      alert(event.currentTarget.className);
+    }
+  </script>
+</body>

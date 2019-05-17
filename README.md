@@ -47,6 +47,37 @@ function logEvent(event) {
 `event.target`: 최초 이벤트 엘리먼트  
 `event.currentTarget`: 실제 이벤트 실행 엘리먼트
 
-## 이벤트 캡처
+## 이벤트 캡처링
+
+```html
+<body>
+  <div class="one">
+    div1
+    <div class="two">
+      div2
+      <div class="three">div3</div>
+    </div>
+  </div>
+</body>
+```
+
+```javascript
+var divs = document.querySelectorAll("div");
+divs.forEach(function(div) {
+  div.addEventListener("click", logEvent, {
+    capture: true // default 값은 false입니다.
+  });
+});
+
+function logEvent(event) {
+  alert(event.currentTarget.className);
+}
+```
+
+실행 결과
+
+    alert: div1 -> div2 -> div3
+
+<sup>div3 클릭 시</sup>
 
 ## 이벤트 위임
