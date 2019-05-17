@@ -124,7 +124,7 @@ input.setAttribute("class", "input3");
 div2.appendChild(input);
 ```
 
-- 해결 방법은 버블링을 이용하면 된다. 부모 이벤트 리스너를 추가하면 된다.
+- 해결 방법은 버블링을 이용하면 된다. 부모 엘리먼트에 이벤트 리스너를 추가하면 된다.
 
 ```javascript
 var parentDiv2 = document.querySelector(".div2");
