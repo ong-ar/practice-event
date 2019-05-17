@@ -80,4 +80,18 @@ function logEvent(event) {
 
 <sup>div3 클릭 시</sup>
 
+엘리먼트 이벤트 발생 시 최상위부터 해당 엘리먼트까지 이벤트 전달  
+구현 방법은 `addEventListener` 두번째 파라미터에 `capture: true` 추가
+
+## event.stopPropagation()
+
+```javascript
+function logEvent(event) {
+  event.stopPropagation();
+  alert(event.target.className);
+}
+```
+
+해당 엘리먼트 이벤트 호출하고 싶다면
+
 ## 이벤트 위임
