@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+  <title>이벤트 버블링</title>
+</head>
+<body>
+  <div onclick="alert('div1')">
+    div1
+    <div onclick="alert('div2')">
+      div2
+      <div onclick="alert('div3')">div3</div>
+    </div>
+  </div>
+</body>
